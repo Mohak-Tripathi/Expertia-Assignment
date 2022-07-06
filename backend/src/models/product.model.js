@@ -1,31 +1,34 @@
-const mongoose = require('mongoose')
+const mongoose = require("mongoose");
 
 const productSchema = mongoose.Schema(
   {
-    user: {
-      type: mongoose.Schema.Types.ObjectId,
+    position: {
+      type: String,
       required: true,
-      ref: "User",
+    },
+    logo: {
+      type: String,
+      required: true,
+    },
+    new: {
+      type: String,
+      required: true,
+    },
+    company: {
+      type: String,
+      required: true,
+    },
+    role: {
+      type: String,
+      required: true,
+    },
+    level: {
+      type: String,
+      required: true,
+    },
+    postedAt: { type: String, required: true },
+    contract: { type: String, required: true },
 
-      // user (Admin) who will create the product
-    },
-
-    name: {
-      type: String,
-      required: true,
-    },
-    image: {
-      type: String,
-      required: true,
-    },
-    brand: {
-      type: String,
-      required: true,
-    },
-    category: {
-      type: String,
-      required: true,
-    },
     description: {
       type: String,
       required: true,
@@ -34,15 +37,15 @@ const productSchema = mongoose.Schema(
       type: String,
       required: true,
     },
-    Experience: {
+    experience: {
       type: Number,
       required: true,
       default: 0,
     },
-    ExpectedCTC: {
+    expectedctc: {
       type: Number,
       required: true,
-      default: 0,
+      default: 5,
     },
   },
   {
@@ -51,6 +54,6 @@ const productSchema = mongoose.Schema(
   }
 );
 
-const Product = mongoose.model("Product", productSchema);
+const Product = mongoose.model("product", productSchema);
 
-export default Product;
+module.exports = Product;

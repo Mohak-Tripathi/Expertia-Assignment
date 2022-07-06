@@ -1,12 +1,14 @@
+
+
 const express = require("express");
 const router = express.Router();
 
-const Product = require("../models/product.model");
+const Resume = require("../models/resume.model");
 
 router.get("", async (req, res) => {
 	try {
-		const products = await Product.find().lean().exec();
-		return res.status(200).send(products);
+		const resume = await Resume.find().lean().exec();
+		return res.status(200).send(resume);
 	} catch (err) {
 		return res.status(500).send(err);
 	}
@@ -14,8 +16,8 @@ router.get("", async (req, res) => {
 
 router.post("", async (req, res) => {
 	try {
-		const product = await Product.create(req.body);
-		return res.status(200).send(product);
+		const resume = await Resume.create(req.body);
+		return res.status(200).send(resume);
 	} catch (err) {
 		return res.status(500).send(err);
 	}
@@ -23,10 +25,10 @@ router.post("", async (req, res) => {
 
 router.get("/:id", async (req, res) => {
 	try {
-		const product = await Product.findById(req.params.id, req.body)
+		const resume = await Resume.findById(req.params.id, req.body)
 			.lean()
 			.exec();
-		return res.status(200).send(product);
+		return res.status(200).send(resume);
 	} catch (err) {
 		return res.status(500).send(err);
 	}
